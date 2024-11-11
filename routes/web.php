@@ -65,7 +65,7 @@ Route::delete('/admin/user/{id}', [usersCcontroller::class, 'destroy'])->name('a
 Route::get('/admin/user/edit/{id}', [usersCcontroller::class, 'edit'])->name('admin.user.edit');
 Route::put('/admin/user/update/{id}', [usersCcontroller::class, 'update'])->name('admin.user.update');
 
-Route::get('/Home', [HomeController::class, 'index'])->name('index');
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::get('/checkout/confirm', [CheckoutController::class, 'showConfirmCheckout'])->name('user.checkout.confirm');
 Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('user.checkout');
@@ -112,11 +112,10 @@ Route::get('/category/banhoc', [CategoryController::class, 'showbanhoc'])->name(
 Route::get('/category/chuotkhongday', [CategoryController::class, 'showchuotkhongday'])->name('category.chuotkhongday');
 Route::get('/category/tranhtreotuong', [CategoryController::class, 'showtranhtreotuong'])->name('category.tranhtreotuong');
 
-Route::prefix('home')->name('home.')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('');
-    Route::get('/', [HomeController::class, ''])->name('');
-});
-
+// Route::prefix('home')->name('home.')->group(function () {
+//     Route::get('/', [HomeController::class, 'index'])->name('');
+//     Route::get('/', [HomeController::class, ''])->name('');
+// });
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('');
     Route::get('/', [AdminController::class, ''])->name('');

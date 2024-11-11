@@ -60,7 +60,7 @@
                                         Profile
                                     </a>
                                     <li class="navbar-item">
-                                        <a class="navbar-link dropdown" href="{{ route('user.orders') }}">Oder</a>
+                                        <a class="navbar-link dropdown" href="">Oder</a>
                                     </li>
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
