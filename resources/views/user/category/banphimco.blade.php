@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <h1 class="text-center my-4">Sản Phẩm Bàn Phím Cơ</h1>
     <div class="row">
         @foreach($products as $product)
@@ -66,17 +66,73 @@
         </div>
         @endforeach
     </div>
+</div> --}}
+<div class="container">
+    <h1 class="text-center my-4">Sản Phẩm Bàn Phím Cơ</h1>
+    <div class="row">
+        @foreach($products as $product)
+        <div class="col-md-3 mb-4">
+            <div class="card position-relative">
+                @if($product->sale)
+                <div class="badge bg-danger position-absolute top-0 start-0 m-2">Sale</div>
+                @endif
+                @if ($product->image)
+                @php
+                    $images = json_decode($product->image);
+                @endphp
+
+                @if (is_array($images) || is_object($images))
+                    @foreach ($images as $image)
+                        <img src="{{ asset('storage/' . $image) }}" class="card-img-top" alt="Product Image" style="width: 100%; height: 250px; object-fit: cover;">
+                        @break
+                    @endforeach
+                @else
+                    <p>Invalid image data</p>
+                @endif
+                @else
+                <p>No image available</p>
+                @endif
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="product-video.html" class="text-dark">{{ $product->name }}</a>
+                    </h5>
+
+                    <h6 class="card-price">
+                        @if ($product->sale_percentage)
+                        <span class="text-muted" style="text-decoration: line-through;">
+                            {{ number_format($product->price, 0, ',', '.') }} VND
+                        </span>
+                        <br>
+                        <span class="text-danger">
+                            {{ number_format($product->price - ($product->price * ($product->sale_percentage / 100)), 0, ',', '.') }} VND
+                        </span>
+                        @else
+                        <span>{{ number_format($product->price, 0, ',', '.') }} VND</span>
+                        @endif
+                    </h6>
+                    <div class="d-flex align-items-center">
+                        <form id="addToCartForm" action="{{ route('cart.add', ['itemId' => $product->id]) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                                    <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
+                                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                </svg>
+                            </button>
+                        </form>
+
+                        <a title="Chi tiết sản phẩm" href="{{ route('products.show', $product->id) }}" class="btn btn-secondary ms-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
 </div>
-<style>
-    .sale-badge{
-        position: absolute;
-    top: 10px;
-    left: 10px;
-    background: red;
-    padding: 5px 10px;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    }
-    </style>
+
 @endsection

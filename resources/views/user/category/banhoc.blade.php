@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <h1 class="text-center my-4">Sản Phẩm Bàn Học</h1>
     <div class="row">
         @foreach($products as $product)
@@ -66,17 +66,68 @@
         </div>
         @endforeach
     </div>
+</div> --}}
+<div class="container">
+    <h1 class="text-center my-4">Sản Phẩm Bàn Phím Cơ</h1>
+    <div class="row" data-aos="fade-up" data-aos-duration="1000">
+        @foreach($products as $product)
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Cột sản phẩm -->
+            <div class="card h-100 @if ($product->quantity == 0) out-of-stock @endif"> <!-- Card sản phẩm -->
+                <div class="card-header position-relative">
+                    @if ($product->sale)
+                        <span class="badge bg-danger position-absolute top-0 start-0">Sale</span>
+                    @endif
+                    @if ($product->quantity == 0)
+                        <span class="badge bg-secondary position-absolute top-0 end-0">Hết hàng</span>
+                    @endif
+
+                    <!-- Hình ảnh sản phẩm -->
+                    @if ($product->image)
+                        @php $images = json_decode($product->image); @endphp
+                        @if (is_array($images) || is_object($images))
+                            <img src="{{ asset('storage/' . $images[0]) }}" class="card-img-top" alt="Product Image" style="height: 200px; object-fit: cover;">
+                        @else
+                            <p>Invalid image data</p>
+                        @endif
+                    @else
+                        <img src="default-placeholder.jpg" class="card-img-top" alt="No Image">
+                    @endif
+                </div>
+                
+                <div class="card-body text-center">
+                    <h6 class="card-title">
+                        <a href="{{ route('products.show', $product->id) }}" class="text-decoration-none">{{ $product->name }}</a>
+                    </h6>
+                    <h6 class="card-price">
+                        @if ($product->sale_percentage)
+                            <span class="text-muted text-decoration-line-through">
+                                {{ number_format($product->price, 0, ',', '.') }} VND
+                            </span><br>
+                            <span class="text-danger fw-bold">
+                                {{ number_format($product->price - ($product->price * ($product->sale_percentage / 100)), 0, ',', '.') }} VND
+                            </span>
+                        @else
+                            <span>{{ number_format($product->price, 0, ',', '.') }} VND</span>
+                        @endif
+                    </h6>
+                </div>
+
+                <div class="card-footer d-flex justify-content-between">
+                    <form action="{{ route('cart.add', ['itemId' => $product->id]) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-primary btn-sm @if ($product->quantity == 0) disabled @endif">
+                            <i class="bi bi-cart-plus"></i> Thêm vào giỏ
+                        </button>
+                    </form>
+                    <a href="{{ route('products.show', $product->id) }}" class="btn btn-secondary btn-sm">
+                        <i class="bi bi-eye"></i> Xem chi tiết
+                    </a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
 </div>
-<style>
-    .sale-badge{
-        position: absolute;
-    top: 10px;
-    left: 10px;
-    background: red;
-    padding: 5px 10px;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    }
-    </style>
+
+
 @endsection
