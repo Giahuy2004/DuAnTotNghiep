@@ -19,7 +19,6 @@ class Product extends Model
         'quantity',
         'sale_percentage', // Nếu có
     ];
-
     public $timestamps = false;
 
     function category()

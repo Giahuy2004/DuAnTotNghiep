@@ -61,15 +61,15 @@
 							</li>
 
 							<li>
-								<a href="blog.html">Blog</a>
+								<a href="{{ route('blog') }}">Blog</a>
 							</li>
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="{{ route('about') }}">About</a>
 							</li>
 
 							<li>
-								<a href="contact.html">Contact</a>
+								<a href="{{ route('contact') }}">Contact</a>
 							</li>
 						</ul>
 					</div>	
@@ -165,7 +165,7 @@
 		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
 			<div class="container-search-header">
 				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img src="images/icons/icon-close2.png" alt="CLOSE">
+					<img src="{{asset('images/icons/icon-close2.png')}}" alt="CLOSE">
 				</button>
 
 				<form class="wrap-search-header flex-w p-l-15" action="{{ route('search') }}" method="GET">
@@ -326,11 +326,11 @@
 									</a>
 								</li>
 	
-								<li class="p-b-13">
+								{{-- <li class="p-b-13">
 									<a href="{{ route('admin.oders.list')}}" class="stext-102 cl2 hov-cl1 trans-04">
 										Order
 									</a>
-								</li>
+								</li> --}}
 	
 							@else
 								<li class="p-b-13">
@@ -341,6 +341,11 @@
 								<li class="p-b-13">
 									<a href="{{ route('register') }}" class="stext-102 cl2 hov-cl1 trans-04">
 										Register
+									</a>
+								</li>
+								<li class="p-b-13">
+									<a href="{{ route('admin.oders.list')}}" class="stext-102 cl2 hov-cl1 trans-04">
+										Order
 									</a>
 								</li>
 							@endauth
