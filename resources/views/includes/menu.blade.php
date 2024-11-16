@@ -14,12 +14,17 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li class="active-menu">
+							<li>
 								<a href="{{route('index')}}">Home</a>
+							</li>
+							<li class="active-menu">
+								<a href="{{route('index')}}">Shop</a>
 								<ul class="sub-menu">
-									<li><a href="index.html">Homepage 1</a></li>
-									<li><a href="home-02.html">Homepage 2</a></li>
-									<li><a href="home-03.html">Homepage 3</a></li>
+									<li><a href="{{ route('category.manhinh') }}">Màn Hình</a></li>
+									<li><a href="{{ route('category.banphimco') }}">Bàn Phím</a></li>
+									<li><a href="{{ route('category.banhoc') }}">Bàn Làm Việc</a></li>
+									<li><a href="{{ route('category.tranhtreotuong') }}">Tranh Treo Tường</a></li>
+									<li><a href="{{ route('category.chuotkhongday') }}">Chuột Không Dây</a></li>
 								</ul>
 							</li>
 							{{-- <ul class="dropdown-position-list">
@@ -51,10 +56,6 @@
 									</nav>
 								@endif
 							</ul> --}}
-							<li>
-								<a href="">Shop</a>
-							</li>
-
 							<li class="label1" data-label1="hot">
 								<a href="shoping-cart.html">Features</a>
 							</li>

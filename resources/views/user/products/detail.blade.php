@@ -45,9 +45,7 @@
                         </div>
                         <div class="mb-4">
                             <p class="text-danger fw-bold mb-1">Giá sale:</p>
-                            <span
-                                class="fs-4 text-danger">{{ number_format($product->price - $product->price * ($product->sale_percentage / 100)) }}
-                                VND</span>
+                            <span class="fs-4 text-danger">{{ number_format($product->price - $product->price * ($product->sale_percentage / 100)) }} VND</span>
                         </div>
 
                         <!-- Tuỳ chọn sản phẩm -->
