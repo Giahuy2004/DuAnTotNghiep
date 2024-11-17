@@ -101,6 +101,7 @@ Route::delete('/admin/orders/{id}', [OrderController::class, 'destroy'])->name('
 Route::get('/user/orders', [OrderController::class, 'index'])->name('user.orders');
 Route::get('/user/orders/{id}', [OrderController::class, 'show'])->name('user.orders.show');
 Route::get('/user/orders', [OrderController::class, 'index'])->name('user.orders.index');
+
 // Route::get('/', function () {
 //     return view('index');
 // });

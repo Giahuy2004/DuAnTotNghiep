@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+
     public function index()
     {
         // Lấy tất cả đơn hàng của user hiện tại
@@ -21,6 +22,7 @@ class OrderController extends Controller
         // Trả về view cùng với dữ liệu đơn hàng
         return view('user.orders.index', compact('orders'));
     }
+
     public function list()
     {
         // Lấy tất cả đơn hàng và các chi tiết liên quan
@@ -39,6 +41,7 @@ class OrderController extends Controller
 
         return view('user.orders.show', compact('order'));
     }
+
     public function updateStatus(Request $request, $id)
     {
         $order = Order::findOrFail($id);
@@ -54,5 +57,4 @@ class OrderController extends Controller
 
         return redirect()->back()->with('success', 'Đơn hàng đã được xóa thành công.');
     }
-
 }

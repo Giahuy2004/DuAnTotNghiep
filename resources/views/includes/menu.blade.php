@@ -8,7 +8,7 @@
 					
 					<!-- Logo desktop -->		
 					<a href="{{route('index')}}" class="logo">
-						<img src="{{ asset('images/icons/logo-01.png') }}" alt="IMG-LOGO">
+						<img src="{{ asset('img/logo1.png') }}" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->
@@ -100,7 +100,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index.html"><img src="{{ asset('images/icons/logo-01.png') }}" alt="IMG-LOGO"></a>
+				<a href="index.html"><img src="{{ asset('img/logo1.png') }}" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -326,11 +326,11 @@
 									</a>
 								</li>
 	
-								{{-- <li class="p-b-13">
-									<a href="{{ route('admin.oders.list')}}" class="stext-102 cl2 hov-cl1 trans-04">
+								<li class="p-b-13">
+									<a href="{{ route('user.orders.index')}}" class="stext-102 cl2 hov-cl1 trans-04">
 										Order
 									</a>
-								</li> --}}
+								</li>
 	
 							@else
 								<li class="p-b-13">
