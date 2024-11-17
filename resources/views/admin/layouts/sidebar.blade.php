@@ -55,14 +55,20 @@
                                  </li>
                              </ul>
                          </li>
-
-                         <li class="sidebar-main-title sidebar-main-title-2">
-                             <div>
-                                 <h6 class="lan-1">Ứng dụng</h6>
-                                 <p class="lan-2">Ứng dụng sẵn sàng sử dụng</p>
-                             </div>
-                         </li>
-
+                         <li class="sidebar-list">
+                            <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                                <i data-feather="users"></i>
+                                <span>Bài viết</span>
+                            </a>
+                            <ul class="sidebar-submenu">
+                                <li>
+                                    <a href="{{ route('admin.blog.index') }}">Danh sách bài viết</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.blog.add') }}">Thêm bài viết</a>
+                                </li>
+                            </ul>
+                        </li>
                          <li class="sidebar-list">
                              <a class="sidebar-link sidebar-title" href="javascript:void(0)">
                                  <i data-feather="archive"></i>

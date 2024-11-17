@@ -12,13 +12,25 @@ use App\Http\Controllers\CheckoutController;
 use App\Models\admin\Category;
 use App\Models\admin\Product;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+
+Route::prefix('admin')->group(function () {
+    Route::get('/posts', [PostController::class, 'index'])->name('admin.blog.index'); // Hiển thị danh sách bài viết
+    Route::get('/posts/create', [PostController::class, 'create'])->name('admin.blog.add'); // Form tạo bài viết mới
+    Route::post('/posts/store', [PostController::class, 'store'])->name('admin.blog.store'); // Lưu bài viết mới
+    Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('admin.blog.edit'); // Form chỉnh sửa bài viết
+    Route::put('/posts/{post}', [PostController::class, 'update'])->name('admin.blog.update'); // Cập nhật bài viết
+    Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('admin.blog.destroy'); // Xóa bài viết
+});
+
+Route::get('/blog/{post}', [PostController::class, 'show'])->name('user.blog.show');
+Route::get('/blog', [PostController::class, 'userBlog'])->name('user.blog.index');
+
+
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
-Route::get('/blog', function () {
-    return view('user.blog');
-})->name('blog');
 Route::get('/contact', function () {
     return view('user.contact');
 })->name('contact');
@@ -82,8 +94,7 @@ Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])
 Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 
 
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{productId}', [CartController::class, 'add'])->name('cart.add');
 Route::delete('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');

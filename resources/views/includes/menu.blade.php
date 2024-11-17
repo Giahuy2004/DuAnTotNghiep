@@ -61,7 +61,7 @@
 							</li>
 
 							<li>
-								<a href="{{ route('blog') }}">Blog</a>
+								<a href="{{ route('user.blog.index') }}">Blog</a>
 							</li>
 
 							<li>
@@ -344,7 +344,7 @@
 									</a>
 								</li>
 								<li class="p-b-13">
-									<a href="{{ route('admin.oders.list')}}" class="stext-102 cl2 hov-cl1 trans-04">
+									<a href="{{ route('user.orders.index')}}" class="stext-102 cl2 hov-cl1 trans-04">
 										Order
 									</a>
 								</li>

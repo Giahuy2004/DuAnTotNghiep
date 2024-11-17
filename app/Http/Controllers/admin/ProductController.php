@@ -21,7 +21,6 @@ class ProductController extends Controller
         $products = $this->product->latest()->paginate(5);
         return view('index', compact('products'));
     }
-
     public function index()
     {
         $product = Product::all();
