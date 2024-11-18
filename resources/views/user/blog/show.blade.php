@@ -50,7 +50,6 @@
                             <h4 class="ltext-109 cl2 p-b-28">
                                 {{ $post->title }}
                             </h4>
-                
                             <!-- Nội dung bài viết -->
                             <p class="stext-117 cl6 p-b-26">
                                 {!! nl2br(e($post->content)) !!}
@@ -322,7 +321,7 @@
 				</div>
 			</div>
 		</div>
-	</section>	
+</section>	
 {{-- <section class="bg0 p-t-62 p-b-60">
 <div class="page-body">
     <div class="post-detail">

@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <div class="container">
+    {{-- <div class="container">
         <h2>Kết quả tìm kiếm cho: "{{ $query }}"</h2>
         @if ($products->isEmpty())
             <p class="no-results">Không tìm thấy sản phẩm nào.</p>
@@ -17,7 +17,6 @@
                         @php
                             $images = json_decode($product->image);
                         @endphp
-        
                         @if (is_array($images) || is_object($images))
                             @foreach ($images as $image)
                                 <img src="{{ asset('storage/' . $image) }}" class="img-fluid" alt="Product Image" style="width: 250px; height: 250px;">
@@ -70,72 +69,69 @@
                 @endforeach
             </div>
         @endif
+    </div> --}}
+    <div class="bg0 m-t-23 p-b-140">
+		<div class="container">
+            <div class="row isotope-grid">
+                @foreach($products as $product)
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
+                    <!-- Block2 -->
+                    <div class="block2">
+                        <div class="block2-pic hov-img0">
+                            <!-- Hiển thị ảnh đầu tiên từ danh sách ảnh -->
+                            @if ($product->image)
+                                @php
+                                    $images = json_decode($product->image);
+                                @endphp
+                                @if (is_array($images) || is_object($images))
+                                    @foreach ($images as $image)
+                                        <img src="{{ asset('storage/' . $image) }}" class="img-fluid" alt="IMG-PRODUCT" style="width: 250px; height: 250px;">
+                                        @break <!-- Chỉ hiển thị hình ảnh đầu tiên -->
+                                    @endforeach
+                                @else
+                                    <p>Invalid image data</p>
+                                @endif
+                            @else
+                                <img src="{{ asset('images/default.jpg') }}" class="img-fluid" alt="IMG-PRODUCT">
+                            @endif
+    
+                            <a href="{{ route('products.show', $product->id) }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                Quick View
+                            </a>
+                        </div>
+    
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="{{ route('products.show', $product->id) }}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    {{ $product->name }}
+                                </a>
+    
+                                <span class="stext-105 cl3">
+                                    @if ($product->sale_percentage)
+                                        <span style="text-decoration: line-through;">
+                                            {{ number_format($product->price, 0, ',', '.') }} VND
+                                        </span>
+                                        <br>
+                                        <span style="color:red;">
+                                            {{ number_format($product->price - ($product->price * ($product->sale_percentage / 100)), 0, ',', '.') }} VND
+                                        </span>
+                                    @else
+                                        {{ number_format($product->price, 0, ',', '.') }} VND
+                                    @endif
+                                </span>
+                            </div>
+    
+                            <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04" src="{{ asset('images/icons/icon-heart-01.png') }}" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('images/icons/icon-heart-02.png') }}" alt="ICON">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
     </div>
 @endsection
-<style>
-    /* Định dạng chung cho sản phẩm */
-.product {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
-
-.product:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Cải tiến ảnh sản phẩm */
-.product img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.product img:hover {
-    transform: scale(1.05);
-}
-
-/* Định dạng tiêu đề sản phẩm */
-.product h5 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-    margin-top: 10px;
-}
-
-/* Định dạng giá sản phẩm */
-.product p {
-    font-size: 16px;
-    color: #e74c3c;
-    font-weight: 500;
-    margin-top: 5px;
-}
-
-/* Giới hạn chiều cao của các sản phẩm để có sự đều đặn */
-.product-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-around;
-}
-
-.product-container .col-md-3 {
-    flex: 1 1 22%;
-    max-width: 22%;
-}
-
-/* Cải tiến hiệu ứng khi không có kết quả */
-.no-results {
-    text-align: center;
-    font-size: 18px;
-    color: #777;
-    margin-top: 20px;
-}
-
-    </style>
