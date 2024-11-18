@@ -406,7 +406,13 @@
             }
         </style>
         <!-- Related Products -->
+
         <section class="sec-product bg0 p-t-100 p-b-50">
+            <div class="p-b-32">
+				<h3 class="ltext-105 cl5 txt-center respon1">
+					Sản khác
+				</h3>
+			</div>
             <div class="container">
                 <!-- Tab01 -->
                 <div class="tab01">

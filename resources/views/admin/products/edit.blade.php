@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('content')
-    <div class="page-body">
+<div class="page-body">
         <div class="title-header">
             <h5>Chỉnh Sửa Sản Phẩm</h5>
         </div>

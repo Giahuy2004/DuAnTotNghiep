@@ -321,12 +321,7 @@
                     <!-- Product Block -->
                     <div class="block2  @if ($product->quantity == 0) out-of-stock @endif" >
                         <div class="block2-pic hov-img0">
-                            @if ($product->sale)
-                            <span class="badge bg-danger position-absolute top-0 start-0">Sale</span>
-                        @endif
-                        @if ($product->quantity == 0)
-                            <span class="badge bg-secondary position-absolute top-0 end-0">Hết hàng</span>
-                        @endif
+                   
                             <!-- Product Image -->
                             @if ($product->image)
                                 @php $images = json_decode($product->image); @endphp
@@ -354,7 +349,12 @@
                                     class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                     {{ $product->name }}
                                 </a>
-
+                                @if ($product->sale)
+                                <span class="text-muted text-decoration-line-through">Sale</span>
+                            @endif
+                            @if ($product->quantity == 0)
+                                <span class="text-muted text-decoration-line-through">Hết hàng</span>
+                            @endif
                                 <!-- Product Price -->
                                 <span class="stext-105 cl3">
                                     @if ($product->sale_percentage)
