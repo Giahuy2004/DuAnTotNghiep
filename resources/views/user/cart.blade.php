@@ -12,7 +12,7 @@
         {{ session('success') }}
     </div>
 @endif
-<div class="container my-5">
+{{-- <div class="container my-5">
     <h2 class="text-center mb-4">Giỏ hàng của bạn</h2>
     @if(session('cart') && count(session('cart')) > 0)
         <div class="row">
@@ -80,6 +80,92 @@
             Giỏ hàng của bạn đang trống.
         </div>
     @endif
+</div> --}}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Giỏ hàng của bạn</h2>
+
+    @if(session('cart') && count(session('cart')) > 0)
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Hình ảnh</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Tổng</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($cart as $item)
+                        <tr>
+                            <!-- Tên sản phẩm -->
+                            <td class="align-middle">{{ $item['name'] }}</td>
+
+                            <!-- Hình ảnh sản phẩm -->
+                            <td class="align-middle text-center">
+                                @php
+                                    $images = json_decode($item['image'], true);
+                                @endphp
+                                <img src="{{ asset('storage/' . ($images[0] ?? 'path/to/default-image.jpg')) }}" alt="{{ $item['name'] }}" style="width: 80px; height: 80px; object-fit: cover;">
+                            </td>
+
+                            <!-- Giá sản phẩm -->
+                            <td class="align-middle text-center">{{ number_format($item['price'], 0, ',', '.') }} VNĐ</td>
+
+                            <!-- Số lượng sản phẩm -->
+                            <td class="align-middle text-center">
+                                <form action="{{ route('cart.update', ['id' => $item['id']]) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="input-group">
+                                        <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="1" class="form-control" style="width: 80px;" required>
+                                        <button type="submit" class="btn btn-primary btn-sm">Cập nhật</button>
+                                    </div>
+                                </form>
+                            </td>
+
+                            <!-- Tổng giá -->
+                            <td class="align-middle text-center">
+                                {{ number_format($item['price'] * $item['quantity'], 0, ',', '.') }} VNĐ
+                            </td>
+
+                            <!-- Nút xóa -->
+                            <td class="align-middle text-center">
+                                <form action="{{ route('cart.remove', ['productId' => $item['id']]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tổng giá trị và hành động -->
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <h4 class="text-danger">
+                Tổng giá trị: 
+                {{ number_format(array_sum(array_map(fn($item) => $item['price'] * $item['quantity'], $cart)), 0, ',', '.') }} VNĐ
+            </h4>
+            {{-- <a href="{{ route('user.checkout.confirm') }}" class="btn btn-success">Thanh toán</a> --}}
+            <div class="d-flex justify-content-start">
+                <form action="{{ route('user.checkout.confirm') }}" method="GET">
+                    @csrf
+                    <button type="submit" class="btn btn-success">Xác nhận thanh toán</button>
+                </form>
+            </div>
+        </div>
+    @else
+        <div class="alert alert-info text-center">
+            Giỏ hàng của bạn đang trống.
+        </div>
+    @endif
 </div>
+
 @endsection
 

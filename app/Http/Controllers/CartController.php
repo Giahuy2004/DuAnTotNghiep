@@ -82,9 +82,9 @@ class CartController extends Controller
             session()->put('cart', $cart);
         }
 
-        return redirect()->route('cart.index')->with('success', 'Product removed from cart successfully!');
+        return redirect()->route('cart.index')->with('success', 'Xóa thành công!');
     }
-
+    
     // Cập nhật số lượng sản phẩm trong giỏ hàng
     public function update(Request $request, $id)
     {
@@ -111,6 +111,6 @@ class CartController extends Controller
     public function checkout(Request $request)
     {
 
-        return redirect()->route('cart.index')->with('success', 'Đặt hàng thành công!');
+        return redirect()->route('user.checkout.confirm')->with('success', 'Đặt hàng thành công!');
     }
 }

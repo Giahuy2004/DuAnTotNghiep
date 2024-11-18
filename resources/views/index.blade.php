@@ -281,7 +281,7 @@
 
                         <div class="block1-txt-child2 p-b-4 trans-05">
                             <div class="block1-link stext-101 cl0 trans-09">
-                                Mua ngay
+                                <a href="{{ route('category.banphimco')}}">Mua ngay</a> 
                             </div>
                         </div>
                     </a>
@@ -303,7 +303,7 @@
 
                         <div class="block1-txt-child2 p-b-4 trans-05">
                             <div class="block1-link stext-101 cl0 trans-09">
-                                Mua ngay
+                                <a href="{{ route('category.chuotkhongday')}}">Mua ngay</a> 
                             </div>
                         </div>
                     </a>
@@ -326,7 +326,7 @@
 
                         <div class="block1-txt-child2 p-b-4 trans-05">
                             <div class="block1-link stext-101 cl0 trans-09">
-                                Mua ngay
+                                <a href="{{ route('category.manhinh')}}">Mua ngay</a> 
                             </div>
                         </div>
                     </a>

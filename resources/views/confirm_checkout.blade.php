@@ -154,7 +154,6 @@
 
     <form action="{{ route('user.checkout.process') }}" method="POST">
         @csrf
-
         <div class="row">
             <!-- Customer Information Section -->
             <div class="col-md-6 mb-4">
@@ -265,13 +264,9 @@
                     <div class="text-right mb-3">
                         <h4>Tổng giá trị đơn hàng: <span class="fw-bold text-danger">{{ number_format($totalPrice, 0, ',', '.') }} VNĐ</span></h4>
                     </div>
-
                     <div class="text-right">
                         <button type="submit" class="btn btn-success">Xác nhận thanh toán</button>
                     </div>
-
-
-                        
                 </div>
             </div>
         </div>

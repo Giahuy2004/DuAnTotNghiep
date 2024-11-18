@@ -89,6 +89,11 @@ Route::put('/admin/user/update/{id}', [usersCcontroller::class, 'update'])->name
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
+// Route::get('/checkout/confirm', [CheckoutController::class, 'showConfirmCheckout'])->name('user.checkout.confirm');
+// Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('user.checkout');
+// Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('user.checkout.process');
+// Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
+
 Route::get('/checkout/confirm', [CheckoutController::class, 'showConfirmCheckout'])->name('user.checkout.confirm');
 Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('user.checkout');
 Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('user.checkout.process');
@@ -96,11 +101,19 @@ Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('c
 
 
 
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+// Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+// Route::delete('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
+// Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+// Route::get('/checkout', [CartController::class, 'checkout'])->name('user.checkout.confirm');
 Route::post('/cart/add/{productId}', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::put('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 Route::delete('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
-// Route::put('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
-Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+
+
+
+
 
 
 Route::post('/cart/add/{itemId}/{quantity}', [CartController::class, 'add'])->name('cart.add');
