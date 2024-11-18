@@ -65,6 +65,7 @@ Route::get('/admin/addproducts', [ProductController::class, 'add'])->name('admin
 // Route::get('/admin/product/addproduct', [ProductController::class, 'add'])->name('admin.products.add');
 Route::post('/admin/products/store', [ProductController::class, 'store'])->name('admin.products.store');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/showall', [ProductController::class, 'product'])->name('products.showall');
 Route::get('/admin/stock', [ProductController::class, 'stock'])->name('admin.products.stock');
 Route::get('/admin/product/edit/{id}', [ProductController::class, 'edit'])->name('admin.products.edit');
 Route::delete('/admin/product/destroy/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');

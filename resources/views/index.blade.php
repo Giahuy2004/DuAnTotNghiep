@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
- {{-- <section class="section recent-part">
+    {{-- <section class="section recent-part">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -185,7 +185,7 @@
     <section class="section-slide">
         <div class="wrap-slick1 rs1-slick1">
             <div class="slick1">
-                <div class="item-slick1" style="background-image: url({{asset('img/banner7.jpg')}});">
+                <div class="item-slick1" style="background-image: url({{ asset('img/banner7.jpg') }});">
                     <div class="container h-full">
                         <div class="flex-col-l-m h-full p-t-100 p-b-30">
                             <div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
@@ -210,7 +210,7 @@
                     </div>
                 </div>
 
-                <div class="item-slick1" style="background-image: url({{asset('img/banner5.jpg')}});">
+                <div class="item-slick1" style="background-image: url({{ asset('img/banner5.jpg') }});">
                     <div class="container h-full">
                         <div class="flex-col-l-m h-full p-t-100 p-b-30">
                             <div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
@@ -235,7 +235,7 @@
                     </div>
                 </div>
 
-                <div class="item-slick1" style="background-image: url({{asset('img/banner1.jpg')}});">
+                <div class="item-slick1" style="background-image: url({{ asset('img/banner1.jpg') }});">
                     <div class="container h-full">
                         <div class="flex-col-l-m h-full p-t-100 p-b-30">
                             <div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
@@ -268,7 +268,7 @@
             <div class="size-202 m-lr-auto respon4">
                 <!-- Block1 -->
                 <div class="block1 wrap-pic-w">
-                    <img src="{{asset('img/banphim.jpg')}}" alt="IMG-BANNER">
+                    <img src="{{ asset('img/banphim.jpg') }}" alt="IMG-BANNER">
 
                     <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                         <div class="block1-txt-child1 flex-col-l">
@@ -276,7 +276,7 @@
                                 Bàn phím
                             </span>
 
-                         
+
                         </div>
 
                         <div class="block1-txt-child2 p-b-4 trans-05">
@@ -291,14 +291,14 @@
             <div class="size-202 m-lr-auto respon4">
                 <!-- Block1 -->
                 <div class="block1 wrap-pic-w">
-                    <img src="{{asset('img/e.png')}}" alt="IMG-BANNER">
+                    <img src="{{ asset('img/e.png') }}" alt="IMG-BANNER">
 
                     <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                         <div class="block1-txt-child1 flex-col-l">
-                            <span class="block1-name ltext-102 trans-04 p-b-8" >
+                            <span class="block1-name ltext-102 trans-04 p-b-8">
                                 Chuột
                             </span>
-                            
+
                         </div>
 
                         <div class="block1-txt-child2 p-b-4 trans-05">
@@ -313,7 +313,7 @@
             <div class="size-202 m-lr-auto respon4">
                 <!-- Block1 -->
                 <div class="block1 wrap-pic-w">
-                    <img src="{{asset('img/man.jpg')}}" alt="IMG-BANNER">
+                    <img src="{{ asset('img/man.jpg') }}" alt="IMG-BANNER">
 
                     <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                         <div class="block1-txt-child1 flex-col-l">
@@ -321,7 +321,7 @@
                                 Màn hình
                             </span>
 
-                    
+
                         </div>
 
                         <div class="block1-txt-child2 p-b-4 trans-05">
@@ -371,7 +371,7 @@
 
                                                 <!-- Hình ảnh sản phẩm -->
                                                 <div class="block2-pic hov-img0">
-                                                    @php
+                                                    {{-- @php
                                                         $images = $item->image ? json_decode($item->image) : [];
                                                     @endphp
                                                     @if (!empty($images) && (is_array($images) || is_object($images)))
@@ -382,6 +382,26 @@
                                                         <img src="{{ asset('images/default-placeholder.jpg') }}"
                                                             alt="No Image" class="img-fluid"
                                                             style="height: 200px; object-fit: cover;">
+                                                    @endif --}}
+                                                    @if ($item->image)
+                                                        @php
+                                                            $images = json_decode($item->image);
+                                                        @endphp
+                                                        @if (!empty($images) && (is_array($images) || is_object($images)))
+                                                            @foreach ($images as $image)
+                                                                <img src="{{ asset('storage/' . $image) }}"
+                                                                    class="img-fluid" alt="{{ $item->name }}"
+                                                                    style="height: 250px; object-fit: cover;">
+                                                            @endforeach
+                                                        @else
+                                                            <img src="{{ asset('images/default-placeholder.jpg') }}"
+                                                                alt="No Image" class="img-fluid"
+                                                                style="height: 250px; object-fit: cover;">
+                                                        @endif
+                                                    @else
+                                                        <img src="{{ asset('images/default-placeholder.jpg') }}"
+                                                            alt="No Image" class="img-fluid"
+                                                            style="height: 250px; object-fit: cover;">
                                                     @endif
 
                                                     <!-- Nút "Quick View" -->

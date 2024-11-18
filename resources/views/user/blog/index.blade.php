@@ -16,9 +16,12 @@
                     <div class="blog-item">
                         <div class="hov-img0">
                             <!-- Hiển thị hình ảnh của bài viết (nếu có) -->
-                            <a href="{{ route('user.blog.show', $post->id) }}">
-                                <img src="{{ asset('images/' . $post->image) }}" alt="IMG-BLOG"> <!-- Giả sử bạn lưu ảnh trong thư mục public/images -->
-                            </a>
+                            {{-- <a href="{{ route('user.blog.show', $post->id) }}">
+                                <img src="{{ asset('img/' . $post->image) }}" alt="IMG-BLOG"> 
+                            </a> --}}
+							<a href="{{ route('user.blog.show', $post->id) }}">
+								<img src="{{ asset('storage/' . $post->image) }}" alt="IMG-BLOG">
+							</a>
                         </div>
 
                         <div class="p-t-15">

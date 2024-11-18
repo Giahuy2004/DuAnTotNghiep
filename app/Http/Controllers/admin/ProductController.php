@@ -15,7 +15,6 @@ class ProductController extends Controller
     {
         $this->product = $product;
     }
-
     public function view()
     {
         $products = $this->product->latest()->paginate(5);
@@ -35,7 +34,7 @@ class ProductController extends Controller
     public function product()
     {
         $product = Product::all();
-        return view('admin.products.index', compact('product'));
+        return view('user.products.showall', compact('product'));
     }
 
     public function store(Request $request)
@@ -75,7 +74,6 @@ class ProductController extends Controller
     {
         // Tìm sản phẩm theo ID
         $product = Product::find($id);
-
 
         // Giải mã chuỗi JSON thành mảng
         $images = json_decode($product->image);
