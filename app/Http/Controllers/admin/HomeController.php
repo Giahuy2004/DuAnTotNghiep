@@ -31,7 +31,7 @@ class HomeController extends Controller
     public function showAll()
     {
         $products = Product::all(); // hoặc lấy sản phẩm theo cách bạn cần
-        return view('user.products.index', compact('products'));
+        return view('user.products.showall', compact('product'));
     }
     public function addCart($productId, $quantity)
     {

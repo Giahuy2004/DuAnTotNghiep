@@ -106,11 +106,8 @@ class CartController extends Controller
     
         return redirect()->route('cart.index')->with('error', 'Sản phẩm không tồn tại trong giỏ hàng.');
     }
-
-
     public function checkout(Request $request)
     {
-
-        return redirect()->route('user.checkout.confirm')->with('success', 'Đặt hàng thành công!');
+        return redirect()->route('cart.index')->with('success', 'Đặt hàng thành công!');
     }
 }

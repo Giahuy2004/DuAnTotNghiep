@@ -65,7 +65,9 @@ Route::get('/admin/addproducts', [ProductController::class, 'add'])->name('admin
 // Route::get('/admin/product/addproduct', [ProductController::class, 'add'])->name('admin.products.add');
 Route::post('/admin/products/store', [ProductController::class, 'store'])->name('admin.products.store');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/showall', [ProductController::class, 'product'])->name('products.showall');
+// routes/web.php
+
+
 Route::get('/admin/stock', [ProductController::class, 'stock'])->name('admin.products.stock');
 Route::get('/admin/product/edit/{id}', [ProductController::class, 'edit'])->name('admin.products.edit');
 Route::delete('/admin/product/destroy/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
@@ -88,37 +90,28 @@ Route::get('/admin/user/edit/{id}', [usersCcontroller::class, 'edit'])->name('ad
 Route::put('/admin/user/update/{id}', [usersCcontroller::class, 'update'])->name('admin.user.update');
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-
-// Route::get('/checkout/confirm', [CheckoutController::class, 'showConfirmCheckout'])->name('user.checkout.confirm');
-// Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('user.checkout');
-// Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('user.checkout.process');
-// Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
+Route::get('/products/all', [HomeController::class, 'showAll'])->name('products.showall');
 
 Route::get('/checkout/confirm', [CheckoutController::class, 'showConfirmCheckout'])->name('user.checkout.confirm');
 Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('user.checkout');
 Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('user.checkout.process');
 Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 
+// Route::get('/checkout/confirm', [CheckoutController::class, 'showConfirmCheckout'])->name('user.checkout.confirm');
+// Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('user.checkout');
+// Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('user.checkout.process');
+// Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 
 
 
-// Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-// Route::delete('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
-// Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
-// Route::get('/checkout', [CartController::class, 'checkout'])->name('user.checkout.confirm');
-Route::post('/cart/add/{productId}', [CartController::class, 'add'])->name('cart.add');
+
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::put('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::post('/cart/add/{productId}', [CartController::class, 'add'])->name('cart.add');
 Route::delete('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
-
-
-
-
-
-
+Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/add/{itemId}/{quantity}', [CartController::class, 'add'])->name('cart.add');
-
 Route::post('/cart/add/{itemId}', [CartController::class, 'addToCart'])->name('cart.add');
+
 
 Route::get('/oders/list', [OrderController::class, 'list'])->name('admin.oders.list');
 Route::put('/admin/orders/{id}/status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');

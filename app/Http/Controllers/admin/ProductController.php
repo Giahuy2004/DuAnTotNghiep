@@ -30,13 +30,6 @@ class ProductController extends Controller
         $category = Category::get(['id', 'name']);
         return view('admin.products.add', compact('category'));
     }
-
-    public function product()
-    {
-        $product = Product::all();
-        return view('user.products.showall', compact('product'));
-    }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -74,10 +67,13 @@ class ProductController extends Controller
     {
         // Tìm sản phẩm theo ID
         $product = Product::find($id);
+        if (!$product) {
+            // Nếu sản phẩm không tồn tại, có thể trả về lỗi 404 hoặc redirect
+            return abort(404, 'Sản phẩm không tồn tại');
+        }
 
         // Giải mã chuỗi JSON thành mảng
         $images = json_decode($product->image);
-
         // Lấy giỏ hàng từ session
         $cart = session()->get('cart', []);
 
@@ -89,9 +85,9 @@ class ProductController extends Controller
             return $item['price'] * $item['quantity'];
         }, $cart));
         $relatedProducts = Product::where('category_id', $product->category_id)
-        ->where('id', '!=', $product->id)  // Không lấy chính sản phẩm hiện tại
-        ->limit(4)  // Hiển thị tối đa 4 sản phẩm liên quan
-        ->get();
+            ->where('id', '!=', $product->id)  // Không lấy chính sản phẩm hiện tại
+            ->limit(4)  // Hiển thị tối đa 4 sản phẩm liên quan
+            ->get();
         // Trả về view với sản phẩm, ảnh, số lượng sản phẩm và tổng giá
         return view('user.products.detail', compact('product', 'images', 'cartItemCount', 'totalPrice', 'relatedProducts'));
     }

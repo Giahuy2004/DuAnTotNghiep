@@ -18,7 +18,7 @@
 								<a href="{{route('index')}}">Home</a>
 							</li>
 							<li class="active-menu">
-								<a href="{{route('index')}}">Shop</a>
+								<a href="{{route('products.showall')}}">Shop</a>
 								<ul class="sub-menu">
 									<li><a href="{{ route('category.manhinh') }}">Màn Hình</a></li>
 									<li><a href="{{ route('category.banphimco') }}">Bàn Phím</a></li>

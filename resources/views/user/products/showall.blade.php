@@ -1,29 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>All Products</title>
-</head>
-<body>
+<!-- resources/views/user/products/showall.blade.php -->
+@extends('layout')
+
+@section('content')
+<div class="container">
     <h1>Tất cả sản phẩm</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Tên sản phẩm</th>
-                <th>Giá</th>
-                <th>Hình ảnh</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($products as $product)
-                <tr>
-                    <td>{{ $product->id }}</td>
-                    <td>{{ $product->name }}</td>
-                    <td>{{ number_format($product->price, 0, ',', '.') }} VND</td>
-                    <td><img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="width: 100px;"></td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</body>
-</html>
+    
+    <!-- Hiển thị các sản phẩm -->
+    <div class="row">
+        <h1>Danh sách sản phẩm</h1>
+    
+        @foreach($products as $product)
+            <div class="product-item">
+                <img src="{{ asset('storage/' . json_decode($product->image)[0]) }}" alt="{{ $product->name }}" style="width: 150px; height: 150px;">
+                <h3>{{ $product->name }}</h3>
+                <p>{{ $product->content }}</p>
+                <p>{{ number_format($product->price, 0, ',', '.') }} VND</p>
+                <a href="{{ route('product.show', $product->id) }}" class="btn btn-primary">Xem chi tiết</a>
+            </div>
+        @endforeach
+    </div>
+</div>
+@endsection

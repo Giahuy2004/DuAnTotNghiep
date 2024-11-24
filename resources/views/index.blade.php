@@ -203,7 +203,7 @@
                             <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
                                 <a href="product.html"
                                     class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                   Xem ngay
+                                    Xem ngay
                                 </a>
                             </div>
                         </div>
@@ -215,7 +215,7 @@
                         <div class="flex-col-l-m h-full p-t-100 p-b-30">
                             <div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
                                 <span class="ltext-202 cl2 respon2">
-                                   Thiết kế đẹp mắt
+                                    Thiết kế đẹp mắt
                                 </span>
                             </div>
 
@@ -253,7 +253,7 @@
                             <div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
                                 <a href="product.html"
                                     class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                   Xem ngay
+                                    Xem ngay
                                 </a>
                             </div>
                         </div>
@@ -270,7 +270,8 @@
                 <div class="block1 wrap-pic-w">
                     <img src="{{ asset('img/banphim.jpg') }}" alt="IMG-BANNER">
 
-                    <a href="{{ route('category.banphimco') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                    <a href="{{ route('category.banphimco') }}"
+                        class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                         <div class="block1-txt-child1 flex-col-l">
                             <span class="block1-name ltext-102 trans-04 p-b-8">
                                 Bàn phím
@@ -293,7 +294,8 @@
                 <div class="block1 wrap-pic-w">
                     <img src="{{ asset('img/e.png') }}" alt="IMG-BANNER">
 
-                    <a href="{{ route('category.chuotkhongday') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                    <a href="{{ route('category.chuotkhongday') }}"
+                        class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                         <div class="block1-txt-child1 flex-col-l">
                             <span class="block1-name ltext-102 trans-04 p-b-8">
                                 Chuột
@@ -315,7 +317,8 @@
                 <div class="block1 wrap-pic-w">
                     <img src="{{ asset('img/man.jpg') }}" alt="IMG-BANNER">
 
-                    <a href="{{ route('category.manhinh') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                    <a href="{{ route('category.manhinh') }}"
+                        class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                         <div class="block1-txt-child1 flex-col-l">
                             <span class="block1-name ltext-102 trans-04 p-b-8">
                                 Màn hình
@@ -326,7 +329,7 @@
 
                         <div class="block1-txt-child2 p-b-4 trans-05">
                             <div class="block1-link stext-101 cl0 trans-09">
-                               Mua ngay
+                                Mua ngay
                             </div>
                         </div>
                     </a>
@@ -357,18 +360,6 @@
                                         <!-- Block2 -->
                                         <div class="product-wrapper @if ($item->quantity == 0) out-of-stock @endif">
                                             <div class="block2 position-relative">
-                                                <!-- Nhãn Sale -->
-                                                @if ($item->sale)
-                                                    <span
-                                                        class="badge bg-danger position-absolute top-0 start-0">Sale</span>
-                                                @endif
-
-                                                <!-- Nhãn Hết hàng -->
-                                                @if ($item->quantity == 0)
-                                                    <span class="badge bg-secondary position-absolute top-0 end-0">Hết
-                                                        hàng</span>
-                                                @endif
-
                                                 <!-- Hình ảnh sản phẩm -->
                                                 <div class="block2-pic hov-img0">
                                                     {{-- @php
@@ -418,6 +409,19 @@
                                                             class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                                             {{ $item->name }}
                                                         </a>
+                                                        <!-- Nhãn Sale -->
+                                                        @if ($item->sale)
+                                                            <span
+                                                                class="stext-105 cl3 text-muted text-decoration-line-through">Sale</span>
+                                                        @endif
+
+                                                        <!-- Nhãn Hết hàng -->
+                                                        @if ($item->quantity == 0)
+                                                            <span
+                                                                class="stext-105 cl3 text-muted text-decoration-line-through">Hết
+                                                                hàng</span>
+                                                        @endif
+
                                                         @if ($item->sale_percentage)
                                                             <span
                                                                 class="stext-105 cl3 text-muted text-decoration-line-through">
@@ -515,151 +519,183 @@
             </div>
         </div>
     </section> --}}
-    	<!-- Blog -->
-	<section class="sec-blog bg0 p-t-60 p-b-90">
-		<div class="container">
-			<div class="p-b-66">
-				<h3 class="ltext-105 cl5 txt-center respon1">
-					Our Blogs
-				</h3>
-			</div>
+    <!-- Blog -->
+    <section class="sec-blog bg0 p-t-60 p-b-90">
+        <div class="container">
+            <div class="p-b-66">
+                <h3 class="ltext-105 cl5 txt-center respon1">
+                    Our Blogs
+                </h3>
+            </div>
 
-			<div class="row">
-				<div class="col-sm-6 col-md-4 p-b-40">
-					<div class="blog-item">
-						<div class="hov-img0">
-							<a href="blog-detail.html">
-								<img src="images/blog-01.jpg" alt="IMG-BLOG">
-							</a>
-						</div>
+            <div class="row">
+                <div class="col-sm-6 col-md-4 p-b-40">
+                    <div class="blog-item">
+                        <div class="hov-img0">
+                            <a href="blog-detail.html">
+                                <img src="images/blog-01.jpg" alt="IMG-BLOG">
+                            </a>
+                        </div>
 
-						<div class="p-t-15">
-							<div class="stext-107 flex-w p-b-14">
-								<span class="m-r-3">
-									<span class="cl4">
-										By
-									</span>
+                        <div class="p-t-15">
+                            <div class="stext-107 flex-w p-b-14">
+                                <span class="m-r-3">
+                                    <span class="cl4">
+                                        By
+                                    </span>
 
-									<span class="cl5">
-										Nancy Ward
-									</span>
-								</span>
+                                    <span class="cl5">
+                                        Nancy Ward
+                                    </span>
+                                </span>
 
-								<span>
-									<span class="cl4">
-										on
-									</span>
+                                <span>
+                                    <span class="cl4">
+                                        on
+                                    </span>
 
-									<span class="cl5">
-										July 22, 2017 
-									</span>
-								</span>
-							</div>
+                                    <span class="cl5">
+                                        July 22, 2017
+                                    </span>
+                                </span>
+                            </div>
 
-							<h4 class="p-b-12">
-								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									8 Inspiring Ways to Wear Dresses in the Winter
-								</a>
-							</h4>
+                            <h4 class="p-b-12">
+                                <a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
+                                    8 Inspiring Ways to Wear Dresses in the Winter
+                                </a>
+                            </h4>
 
-							<p class="stext-108 cl6">
-								Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames
-							</p>
-						</div>
-					</div>
-				</div>
+                            <p class="stext-108 cl6">
+                                Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id
+                                euismod. Interdum et male-suada fames
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-				<div class="col-sm-6 col-md-4 p-b-40">
-					<div class="blog-item">
-						<div class="hov-img0">
-							<a href="blog-detail.html">
-								<img src="images/blog-02.jpg" alt="IMG-BLOG">
-							</a>
-						</div>
+                <div class="col-sm-6 col-md-4 p-b-40">
+                    <div class="blog-item">
+                        <div class="hov-img0">
+                            <a href="blog-detail.html">
+                                <img src="images/blog-02.jpg" alt="IMG-BLOG">
+                            </a>
+                        </div>
 
-						<div class="p-t-15">
-							<div class="stext-107 flex-w p-b-14">
-								<span class="m-r-3">
-									<span class="cl4">
-										By
-									</span>
+                        <div class="p-t-15">
+                            <div class="stext-107 flex-w p-b-14">
+                                <span class="m-r-3">
+                                    <span class="cl4">
+                                        By
+                                    </span>
 
-									<span class="cl5">
-										Nancy Ward
-									</span>
-								</span>
+                                    <span class="cl5">
+                                        Nancy Ward
+                                    </span>
+                                </span>
 
-								<span>
-									<span class="cl4">
-										on
-									</span>
+                                <span>
+                                    <span class="cl4">
+                                        on
+                                    </span>
 
-									<span class="cl5">
-										July 18, 2017
-									</span>
-								</span>
-							</div>
+                                    <span class="cl5">
+                                        July 18, 2017
+                                    </span>
+                                </span>
+                            </div>
 
-							<h4 class="p-b-12">
-								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									The Great Big List of Men’s Gifts for the Holidays
-								</a>
-							</h4>
+                            <h4 class="p-b-12">
+                                <a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
+                                    The Great Big List of Men’s Gifts for the Holidays
+                                </a>
+                            </h4>
 
-							<p class="stext-108 cl6">
-								Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
-							</p>
-						</div>
-					</div>
-				</div>
+                            <p class="stext-108 cl6">
+                                Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla
+                                in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-				<div class="col-sm-6 col-md-4 p-b-40">
-					<div class="blog-item">
-						<div class="hov-img0">
-							<a href="blog-detail.html">
-								<img src="images/blog-03.jpg" alt="IMG-BLOG">
-							</a>
-						</div>
+                <div class="col-sm-6 col-md-4 p-b-40">
+                    <div class="blog-item">
+                        <div class="hov-img0">
+                            <a href="blog-detail.html">
+                                <img src="images/blog-03.jpg" alt="IMG-BLOG">
+                            </a>
+                        </div>
 
-						<div class="p-t-15">
-							<div class="stext-107 flex-w p-b-14">
-								<span class="m-r-3">
-									<span class="cl4">
-										By
-									</span>
+                        <div class="p-t-15">
+                            <div class="stext-107 flex-w p-b-14">
+                                <span class="m-r-3">
+                                    <span class="cl4">
+                                        By
+                                    </span>
 
-									<span class="cl5">
-										Nancy Ward
-									</span>
-								</span>
+                                    <span class="cl5">
+                                        Nancy Ward
+                                    </span>
+                                </span>
 
-								<span>
-									<span class="cl4">
-										on
-									</span>
+                                <span>
+                                    <span class="cl4">
+                                        on
+                                    </span>
 
-									<span class="cl5">
-										July 2, 2017 
-									</span>
-								</span>
-							</div>
+                                    <span class="cl5">
+                                        July 2, 2017
+                                    </span>
+                                </span>
+                            </div>
 
-							<h4 class="p-b-12">
-								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									5 Winter-to-Spring Fashion Trends to Try Now
-								</a>
-							</h4>
+                            <h4 class="p-b-12">
+                                <a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
+                                    5 Winter-to-Spring Fashion Trends to Try Now
+                                </a>
+                            </h4>
 
-							<p class="stext-108 cl6">
-								Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed hendrerit ligula porttitor. Fusce sit amet maximus nunc
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                            <p class="stext-108 cl6">
+                                Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed
+                                hendrerit ligula porttitor. Fusce sit amet maximus nunc
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        /* Đảm bảo hình ảnh có cùng kích thước */
+        .block2-pic img {
+            width: 100%;
+            height: 200px;
+            /* Đặt chiều cao cố định */
+            object-fit: cover;
+            /* Đảm bảo hình ảnh không bị méo */
+        }
 
+        /* Căn chỉnh chiều cao phần thông tin sản phẩm */
+        .block2-txt {
+            min-height: 100px;
+            /* Đặt chiều cao tối thiểu */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* Căn đều khoảng cách các phần tử */
+        }
+
+        /* Đảm bảo kích thước cột sản phẩm đồng đều */
+        .item-slick2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* Căn chỉnh giữa hình ảnh và nội dung */
+            height: 350px;
+            /* Đặt chiều cao chung cho tất cả các sản phẩm */
+        }
+    </style>
     <script>
         $(document).ready(function() {
             $('.slick2').slick({
