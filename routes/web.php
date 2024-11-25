@@ -24,7 +24,7 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('/blog/{post}', [PostController::class, 'show'])->name('user.blog.show');
-Route::get('/blog', [PostController::class, 'userBlog'])->name('user.blog.index');
+Route::get('/blog', [PostController::class, 'list'])->name('user.blog.index');
 
 
 

@@ -13,6 +13,14 @@ class PostController extends Controller
         $posts = Post::all();
         return view('admin.blog.index', compact('posts'));
     }
+    public function list()
+    {
+        // Lấy tất cả bài viết
+        $posts = Post::all();
+
+        // Trả về view danh sách bài viết
+        return view('user.blog.index', compact('posts'));
+    }
     public function show($id)
     {
         // Lấy bài viết theo id
@@ -58,7 +66,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id);
-    
+
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required',
@@ -66,15 +74,15 @@ class PostController extends Controller
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image_in_content' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-    
+
         // Xử lý ảnh bìa
         $featured_image = $request->file('featured_image') ? $request->file('featured_image')->store('public/featured_images') : $post->featured_image;
-    
+
         // Xử lý các hình ảnh trong nội dung
-        $image_in_content = $request->file('image_in_content') 
-            ? $request->file('image_in_content')->store('public/images_in_content') 
+        $image_in_content = $request->file('image_in_content')
+            ? $request->file('image_in_content')->store('public/images_in_content')
             : $post->image_in_content;
-    
+
         // Cập nhật bài viết
         $post->update([
             'title' => $request->title,
@@ -83,9 +91,9 @@ class PostController extends Controller
             'featured_image' => $featured_image,
             'image_in_content' => $image_in_content
         ]);
-    
+
         return redirect()->route('admin.blog.index')->with('success', 'Bài viết đã được cập nhật!');
-    }    
+    }
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
