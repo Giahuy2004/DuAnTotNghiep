@@ -171,9 +171,11 @@
             </form>
         </div>
     @else
+    <div class="container my-5">
         <div class="alert alert-info text-center">
             Giỏ hàng của bạn đang trống.
         </div>
+    </div>
     @endif
 </div>
 @endsection
