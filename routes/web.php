@@ -13,6 +13,15 @@ use App\Models\admin\Category;
 use App\Models\admin\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\WishlistController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+    Route::post('/wishlist/store/{productId}', [WishlistController::class, 'store'])->name('wishlist.store');
+    Route::delete('/wishlist/{productId}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+});
+
+
 
 Route::prefix('admin')->group(function () {
     Route::get('/posts', [PostController::class, 'index'])->name('admin.blog.index'); // Hiển thị danh sách bài viết
@@ -96,14 +105,6 @@ Route::get('/checkout/confirm', [CheckoutController::class, 'showConfirmCheckout
 Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('user.checkout');
 Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('user.checkout.process');
 Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
-
-// Route::get('/checkout/confirm', [CheckoutController::class, 'showConfirmCheckout'])->name('user.checkout.confirm');
-// Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('user.checkout');
-// Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('user.checkout.process');
-// Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
-
-
-
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::get('/menu', [CartController::class, 'showMenu'])->name('menu.show');

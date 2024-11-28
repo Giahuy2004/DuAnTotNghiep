@@ -401,7 +401,7 @@
                                                         Xem nhanh
                                                     </a>
                                                 </div>
-
+                                                
                                                 <!-- Thông tin sản phẩm -->
                                                 <div class="block2-txt flex-w flex-t p-t-14">
                                                     <div class="block2-txt-child1 flex-col-l">
@@ -414,14 +414,15 @@
                                                             <span
                                                                 class="stext-105 cl3 text-muted text-decoration-line-through">Sale</span>
                                                         @endif
-
+                                                        
                                                         <!-- Nhãn Hết hàng -->
                                                         @if ($item->quantity == 0)
                                                             <span
                                                                 class="stext-105 cl3 text-muted text-decoration-line-through">Hết
-                                                                hàng</span>
+                                                                hàng
+                                                            </span>
+                                                            
                                                         @endif
-
                                                         @if ($item->sale_percentage)
                                                             <span
                                                                 class="stext-105 cl3 text-muted text-decoration-line-through">
@@ -437,9 +438,7 @@
                                                             </span>
                                                         @endif
                                                     </div>
-
-                                                    <!-- Nút yêu thích -->
-                                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                                    {{-- <div class="block2-txt-child2 flex-r p-t-3">
                                                         <a href="#"
                                                             class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
                                                             <img class="icon-heart1 dis-block trans-04"
@@ -449,7 +448,7 @@
                                                                 src="{{ asset('images/icons/icon-heart-02.png') }}"
                                                                 alt="ICON">
                                                         </a>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>

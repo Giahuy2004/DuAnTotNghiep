@@ -111,7 +111,6 @@
         <!-- Mô tả sản phẩm -->
 
     </section> --}}
-
     <section class="sec-product-detail bg0 p-t-65 p-b-60">
         <div class="container">
             <div class="row">
@@ -229,6 +228,7 @@
                                             class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">Thêm
                                             vào giỏ hàng</button>
                                     </form>
+
                                 </div>
                             </div>
                         </div>
@@ -378,17 +378,21 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" id="productTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="product-description-tab" data-bs-toggle="tab" href="#product-description" role="tab" aria-controls="product-description" aria-selected="true">Mô Tả Sản Phẩm</a>
+                            <a class="nav-link active" id="product-description-tab" data-bs-toggle="tab"
+                                href="#product-description" role="tab" aria-controls="product-description"
+                                aria-selected="true">Mô Tả Sản Phẩm</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Đánh Giá</a>
+                            <a class="nav-link" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab"
+                                aria-controls="reviews" aria-selected="false">Đánh Giá</a>
                         </li>
                     </ul>
-            
+
                     <!-- Tab panes -->
                     <div class="tab-content p-t-43">
                         <!-- Mô Tả Sản Phẩm -->
-                        <div class="tab-pane fade show active" id="product-description" role="tabpanel" aria-labelledby="product-description-tab">
+                        <div class="tab-pane fade show active" id="product-description" role="tabpanel"
+                            aria-labelledby="product-description-tab">
                             <div class="how-pos2 p-lr-15-md">
                                 <p class="stext-102 cl6" id="description-text">
                                     {!! nl2br(e($product->content)) !!}
@@ -396,7 +400,7 @@
                                 <button id="read-more-btn" class="btn btn-link text-primary">Xem thêm</button>
                             </div>
                         </div>
-                        
+
                         <!-- Đánh Giá -->
                         <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                             <div class="row">
@@ -426,22 +430,22 @@
                                                 </p>
                                             </div>
                                         </div>
-            
+
                                         <!-- Add review -->
                                         <form class="w-full">
                                             <h5 class="mtext-108 cl2 p-b-7">
                                                 Add a review
                                             </h5>
-            
+
                                             <p class="stext-102 cl6">
                                                 Your email address will not be published. Required fields are marked *
                                             </p>
-            
+
                                             <div class="flex-w flex-m p-t-50 p-b-23">
                                                 <span class="stext-102 cl3 m-r-16">
                                                     Your Rating
                                                 </span>
-            
+
                                                 <span class="wrap-rating fs-18 cl11 pointer">
                                                     <i class="item-rating pointer zmdi zmdi-star-outline"></i>
                                                     <i class="item-rating pointer zmdi zmdi-star-outline"></i>
@@ -451,25 +455,28 @@
                                                     <input class="dis-none" type="number" name="rating">
                                                 </span>
                                             </div>
-            
+
                                             <div class="row p-b-25">
                                                 <div class="col-12 p-b-5">
                                                     <label class="stext-102 cl3" for="review">Your review</label>
                                                     <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
                                                 </div>
-            
+
                                                 <div class="col-sm-6 p-b-5">
                                                     <label class="stext-102 cl3" for="name">Name</label>
-                                                    <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">
+                                                    <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name"
+                                                        type="text" name="name">
                                                 </div>
-            
+
                                                 <div class="col-sm-6 p-b-5">
                                                     <label class="stext-102 cl3" for="email">Email</label>
-                                                    <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
+                                                    <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email"
+                                                        type="text" name="email">
                                                 </div>
                                             </div>
-            
-                                            <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
+
+                                            <button
+                                                class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
                                                 Submit
                                             </button>
                                         </form>
@@ -480,10 +487,10 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Include Bootstrap JS -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
-            
+
         </div>
         <style>
             .advantage-box {
@@ -521,10 +528,10 @@
 
         <section class="sec-product bg0 p-t-100 p-b-50">
             <div class="p-b-32">
-				<h3 class="ltext-105 cl5 txt-center respon1">
-					Sản khác
-				</h3>
-			</div>
+                <h3 class="ltext-105 cl5 txt-center respon1">
+                    Sản khác
+                </h3>
+            </div>
             <div class="container">
                 <!-- Tab01 -->
                 <div class="tab01">
