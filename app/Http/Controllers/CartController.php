@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin\Product;
+use Illuminate\Support\Facades\View;
 use App\Models\Cart;
 
 class CartController extends Controller
@@ -21,22 +22,34 @@ class CartController extends Controller
 
         return view('user.cart', compact('cart', 'cartItemCount', 'totalPrice'));
     }
-
+    public function showMenu()
+    {
+        // Lấy giỏ hàng từ session, nếu không có giỏ hàng thì gán là mảng rỗng
+        $cart = session()->get('cart', []);
+        
+        // Tính tổng giá trị giỏ hàng
+        $totalPrice = 0;
+        if (is_array($cart)) {
+            foreach ($cart as $item) {
+                $totalPrice += $item['price'] * $item['quantity'];
+            }
+        }
+    
+        // Truyền dữ liệu vào view
+        return view('includes.menu', compact('cart', 'totalPrice'));
+    }
+    
     // Thêm sản phẩm vào cart
     public function add(Request $request, $itemId)
     {
         // Lấy thông tin sản phẩm từ database 
         $product = Product::findOrFail($itemId);
-
         // Lấy giỏ hàng từ session
         $cart = session()->get('cart', []);
-
         // Lấy giá trị số lượng từ request
         $quantity = $request->input('quantity', 1); // Mặc định là 1 nếu không có số lượng
-
         // Giải mã hình ảnh nếu nó là một chuỗi JSON
         $images = json_decode($product->image);
-
         // Lấy hình ảnh đầu tiên (hoặc sử dụng mặc định nếu không có)
         $imagePath = is_array($images) && count($images) > 0 ? $images[0] : 'path/to/default-image.jpg';
         // Lấy giá trị số lượng từ request
@@ -45,7 +58,6 @@ class CartController extends Controller
         if ($product->quantity < $quantity) {
             return redirect()->route('cart.index')->with('error', 'Số lượng sản phẩm trong kho không đủ.');
         }
-
         // Kiểm tra xem sản phẩm đã có trong giỏ hàng hay chưa
         if (isset($cart[$itemId])) {
             // Kiểm tra tổng số lượng khi cộng thêm
@@ -84,7 +96,7 @@ class CartController extends Controller
 
         return redirect()->route('cart.index')->with('success', 'Xóa thành công!');
     }
-    
+
     // Cập nhật số lượng sản phẩm trong giỏ hàng
     public function update(Request $request, $id)
     {
@@ -93,19 +105,32 @@ class CartController extends Controller
         if (isset($cart[$id])) {
             $product = Product::findOrFail($id);
             $newQuantity = $request->input('quantity');
-    
+
             if ($product->quantity < $newQuantity) {
                 return redirect()->route('cart.index')->with('error', 'Số lượng sản phẩm trong kho không đủ.');
             }
-    
+
             $cart[$id]['quantity'] = $newQuantity;
             session()->put('cart', $cart);
-    
+
             return redirect()->route('cart.index')->with('success', 'Cập nhật số lượng sản phẩm thành công!');
         }
-    
+
         return redirect()->route('cart.index')->with('error', 'Sản phẩm không tồn tại trong giỏ hàng.');
     }
+    public function boot()
+    {
+        View::composer('*', function ($view) {
+            $cart = session()->get('cart', []);
+            $totalPrice = 0;
+    
+            foreach ($cart as $item) {
+                $totalPrice += $item['price'] * $item['quantity'];
+            }
+    
+            $view->with('cart', $cart)->with('totalPrice', $totalPrice);
+        });
+    }    
     public function checkout(Request $request)
     {
         return redirect()->route('cart.index')->with('success', 'Đặt hàng thành công!');

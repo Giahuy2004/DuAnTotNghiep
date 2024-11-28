@@ -75,19 +75,19 @@
              <div class="logo-mobile">
                  <a href="index.html"><img src="{{ asset('img/logo1.png') }}" alt="IMG-LOGO"></a>
              </div>
-
-             <!-- Icon header -->
+             <!-- Giỏ hàng trong header -->
              <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
                  <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
                      <i class="zmdi zmdi-search"></i>
                  </div>
                  <div class="flex-c-m h-full p-lr-10 bor5">
-                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
-                         data-notify="2">
-                         <i class="zmdi zmdi-shopping-cart"></i>
-                     </div>
-                 </div>
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
+                         data-notify="{{ isset($cart) && is_array($cart) ? count($cart) : 0 }}">
+                        <i class="zmdi zmdi-shopping-cart"></i>
+                    </div>
+                </div>
              </div>
+
 
              <!-- Button show menu -->
              <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
@@ -117,21 +117,21 @@
                          <i class="fa fa-angle-right" aria-hidden="true"></i>
                      </span>
                  </li>
-				 <li class="label1" data-label1="hot">
-					<a href="shoping-cart.html">Đặc trưng</a>
-				</li>
+                 <li class="label1" data-label1="hot">
+                     <a href="shoping-cart.html">Đặc trưng</a>
+                 </li>
 
-				<li>
-					<a href="{{ route('user.blog.index') }}">Bài viết</a>
-				</li>
+                 <li>
+                     <a href="{{ route('user.blog.index') }}">Bài viết</a>
+                 </li>
 
-				<li>
-					<a href="{{ route('about') }}">Về chúng tôi</a>
-				</li>
+                 <li>
+                     <a href="{{ route('about') }}">Về chúng tôi</a>
+                 </li>
 
-				<li>
-					<a href="{{ route('contact') }}">Liên hệ</a>
-				</li>
+                 <li>
+                     <a href="{{ route('contact') }}">Liên hệ</a>
+                 </li>
              </ul>
          </div>
 
@@ -285,7 +285,7 @@
 
                      <li class="p-b-13">
                          <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-                            Sản phẩm yêu thích
+                             Sản phẩm yêu thích
                          </a>
                      </li>
 
@@ -296,7 +296,7 @@
                              @auth
                                  <li class="p-b-13">
                                      <a href="{{ url('/profile') }}" class="stext-102 cl2 hov-cl1 trans-04">
-                                        Hồ sơ người dùng
+                                         Hồ sơ người dùng
                                      </a>
                                  </li>
 
@@ -313,12 +313,12 @@
                                  </li>
                                  <li class="p-b-13">
                                      <a href="{{ route('register') }}" class="stext-102 cl2 hov-cl1 trans-04">
-                                        Đăng ký
+                                         Đăng ký
                                      </a>
                                  </li>
                                  <li class="p-b-13">
                                      <a href="{{ route('user.orders.index') }}" class="stext-102 cl2 hov-cl1 trans-04">
-                                        Đơn hàng
+                                         Đơn hàng
                                      </a>
                                  </li>
                              @endauth
@@ -391,10 +391,8 @@
          </div>
      </aside>
 
-
-
      <!-- Cart -->
-     <div class="wrap-header-cart js-panel-cart">
+     {{-- <div class="wrap-header-cart js-panel-cart">
          <div class="s-full js-hide-cart"></div>
 
          <div class="header-cart flex-col-l p-l-65 p-r-25">
@@ -478,5 +476,82 @@
                  </div>
              </div>
          </div>
-     </div>
+     </div> --}}
+     {{-- Modal giỏ hàng --}}
+     <div class="wrap-header-cart js-panel-cart">
+        <div class="s-full js-hide-cart"></div>
+    
+        <div class="header-cart flex-col-l p-l-65 p-r-25">
+            <div class="header-cart-title flex-w flex-sb-m p-b-8">
+                <span class="mtext-103 cl2">
+                    Giỏ hàng của tôi
+                </span>
+                <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+                    <i class="zmdi zmdi-close"></i>
+                </div>
+            </div>
+    
+            <div class="header-cart-content flex-w js-pscroll">
+                <ul class="header-cart-wrapitem w-full">
+                    @if(isset($cart) && count($cart) > 0)
+                        @foreach ($cart as $item)
+                            <li class="header-cart-item flex-w flex-t m-b-12">
+                                <div class="header-cart-item-img">
+                                    {{-- <img src="{{ $item['image'] }}" alt="IMG"> --}}
+                                    @if(isset($item['image']))
+                                    @php
+                                        $images = json_decode($item['image'], true);
+                                    @endphp
+                                    @if(is_array($images) && count($images) > 0)
+                                        <img src="{{ asset('storage/' . $images[0]) }}" alt="{{ $item['name'] }}"  class="img-thumbnail">
+                                    @else
+                                        <img src="{{ asset('path/to/default-image.jpg') }}" alt="Ảnh không có"  class="img-thumbnail">
+                                    @endif
+                                @else
+                                    <img src="{{ asset('path/to/default-image.jpg') }}" alt="Ảnh không có"  class="img-thumbnail">
+                                @endif
+                                </div>
+                                <div class="header-cart-item-txt p-t-8">
+                                    <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                                        {{ $item['name'] }}
+                                    </a>
+                                    <span class="header-cart-item-info">
+                                        {{ $item['quantity'] }} x ${{ number_format($item['price'], 2) }}
+                                    </span>
+                                </div>
+                            </li>
+                        @endforeach
+                    @else
+                        <li class="header-cart-item">
+                            <p>Giỏ hàng của bạn đang trống.</p>
+                        </li>
+                    @endif
+                </ul>
+    
+                <div class="w-full">
+                    <div class="header-cart-total w-full p-tb-40">
+                        @if(isset($totalPrice) && $totalPrice > 0)
+                            Tổng cộng: ${{ number_format($totalPrice, 2) }}
+                        @else
+                            Tổng cộng: $0.00
+                        @endif
+                    </div>
+    
+                    <div class="header-cart-buttons flex-w w-full">
+                        <a href="{{ route('cart.index') }}"
+                           class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+                            Giỏ hàng
+                        </a>
+    
+                        <a href="{{ route('user.checkout.confirm') }}"
+                           class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+                            Thanh toán
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
  </body>

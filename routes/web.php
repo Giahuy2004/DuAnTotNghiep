@@ -106,6 +106,7 @@ Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('c
 
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::get('/menu', [CartController::class, 'showMenu'])->name('menu.show');
 Route::post('/cart/add/{productId}', [CartController::class, 'add'])->name('cart.add');
 Route::delete('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
