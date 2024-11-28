@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin\Product;
-use Illuminate\Support\Facades\View;
+
 use App\Models\Cart;
 
 class CartController extends Controller
@@ -36,7 +36,7 @@ class CartController extends Controller
         }
     
         // Truyền dữ liệu vào view
-        return view('includes.menu', compact('cart', 'totalPrice'));
+        return view('includes.menu', compact('cart', 'totalPrice','cartItemCount'));
     }
     
     // Thêm sản phẩm vào cart
@@ -117,20 +117,7 @@ class CartController extends Controller
         }
 
         return redirect()->route('cart.index')->with('error', 'Sản phẩm không tồn tại trong giỏ hàng.');
-    }
-    public function boot()
-    {
-        View::composer('*', function ($view) {
-            $cart = session()->get('cart', []);
-            $totalPrice = 0;
-    
-            foreach ($cart as $item) {
-                $totalPrice += $item['price'] * $item['quantity'];
-            }
-    
-            $view->with('cart', $cart)->with('totalPrice', $totalPrice);
-        });
-    }    
+    }  
     public function checkout(Request $request)
     {
         return redirect()->route('cart.index')->with('success', 'Đặt hàng thành công!');

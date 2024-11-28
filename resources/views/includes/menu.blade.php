@@ -54,7 +54,7 @@
 
                          <div class="flex-c-m h-full p-l-18 p-r-25 bor5">
                              <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
-                                 data-notify="2">
+                                 data-notify="{{ isset($cart) && is_array($cart) ? count($cart) : 0 }}">
                                  <i class="zmdi zmdi-shopping-cart"></i>
                              </div>
                          </div>
@@ -480,7 +480,6 @@
      {{-- Modal giỏ hàng --}}
      <div class="wrap-header-cart js-panel-cart">
         <div class="s-full js-hide-cart"></div>
-    
         <div class="header-cart flex-col-l p-l-65 p-r-25">
             <div class="header-cart-title flex-w flex-sb-m p-b-8">
                 <span class="mtext-103 cl2">
@@ -516,7 +515,7 @@
                                         {{ $item['name'] }}
                                     </a>
                                     <span class="header-cart-item-info">
-                                        {{ $item['quantity'] }} x ${{ number_format($item['price'], 2) }}
+                                        {{ $item['quantity'] }} x ${{ number_format($item['price']) }}
                                     </span>
                                 </div>
                             </li>
