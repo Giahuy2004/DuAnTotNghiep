@@ -228,13 +228,13 @@
                                             class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">Thêm
                                             vào giỏ hàng</button>
                                     </form>
-                                    <form action="{{ route('wishlist.store', ['productId' => $product->id]) }}" method="POST">
+                                    {{-- <form action="{{ route('wishlist.store', ['productId' => $product->id]) }}" method="POST">
                                         @csrf
                                         <button type="submit" 
                                             class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                             Thêm vào yêu thích
                                         </button>
-                                    </form>
+                                    </form> --}}
                                     
                                 </div>
                             </div>
@@ -243,12 +243,17 @@
                         <!--  -->
                         <div class="flex-w flex-m p-l-100 p-t-40 respon7">
                             <div class="flex-m bor9 p-r-10 m-r-11">
-                                <a href="#"
-                                    class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-                                    data-tooltip="Add to Wishlist">
-                                    <i class="zmdi zmdi-favorite"></i>
-                                </a>
+                                <form action="{{ route('wishlist.store', ['productId' => $product->id]) }}" method="POST" id="wishlist-form-{{ $product->id }}">
+                                    @csrf
+                                    <a href="javascript:void(0);" 
+                                       onclick="document.getElementById('wishlist-form-{{ $product->id }}').submit();"
+                                       class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
+                                       data-tooltip="Add to Wishlist">
+                                        <i class="zmdi zmdi-favorite"></i>
+                                    </a>
+                                </form>
                             </div>
+                            
 
                             <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
                                 data-tooltip="Facebook">
