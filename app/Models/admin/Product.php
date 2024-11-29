@@ -5,6 +5,7 @@ namespace App\Models\admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\OrderDetail;
+use App\Models\Review;
 
 class Product extends Model
 {
@@ -35,5 +36,8 @@ class Product extends Model
     {
         return $this->hasMany(OrderDetail::class, 'product_id');
     }
-
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }

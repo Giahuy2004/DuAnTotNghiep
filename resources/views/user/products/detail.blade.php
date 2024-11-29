@@ -110,17 +110,17 @@
         </div>
         <!-- Mô tả sản phẩm -->
     </section> --}}
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
-@if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
 
     <section class="sec-product-detail bg0 p-t-65 p-b-60">
         <div class="container">
@@ -246,7 +246,7 @@
                                             Thêm vào yêu thích
                                         </button>
                                     </form> --}}
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -254,12 +254,13 @@
                         <!--  -->
                         <div class="flex-w flex-m p-l-100 p-t-40 respon7">
                             <div class="flex-m bor9 p-r-10 m-r-11">
-                                <form action="{{ route('wishlist.store', ['productId' => $product->id]) }}" method="POST" id="wishlist-form-{{ $product->id }}">
+                                <form action="{{ route('wishlist.store', ['productId' => $product->id]) }}" method="POST"
+                                    id="wishlist-form-{{ $product->id }}">
                                     @csrf
-                                    <a href="javascript:void(0);" 
-                                       onclick="document.getElementById('wishlist-form-{{ $product->id }}').submit();"
-                                       class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-                                       data-tooltip="Add to Wishlist">
+                                    <a href="javascript:void(0);"
+                                        onclick="document.getElementById('wishlist-form-{{ $product->id }}').submit();"
+                                        class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
+                                        data-tooltip="Add to Wishlist">
                                         <i class="zmdi zmdi-favorite"></i>
                                     </a>
                                 </form>
@@ -451,7 +452,6 @@
                                                 </p>
                                             </div>
                                         </div>
-
                                         <!-- Add review -->
                                         <form class="w-full">
                                             <h5 class="mtext-108 cl2 p-b-7">
@@ -501,6 +501,8 @@
                                                 Submit
                                             </button>
                                         </form>
+                                  
+
                                     </div>
                                 </div>
                             </div>
@@ -550,7 +552,7 @@
         <section class="sec-product bg0 p-t-100 p-b-50">
             <div class="p-b-32">
                 <h3 class="ltext-105 cl5 txt-center respon1">
-                    Sản khác
+                    Sản phẩm khác
                 </h3>
             </div>
             <div class="container">

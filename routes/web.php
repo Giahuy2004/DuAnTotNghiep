@@ -14,6 +14,10 @@ use App\Models\admin\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\ReviewController;
+
+Route::post('product/{productId}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+Route::delete('reviews/{id}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
