@@ -345,10 +345,6 @@
                     Sản phẩm
                 </h3>
             </div>
-
-            <!-- Tab01 -->
-            <div class="tab01">
-                <!-- Tab panes -->
                 <div class="tab-content p-t-50">
                     <!-- - -->
                     <div class="tab-pane fade show active" id="best-seller" role="tabpanel">
@@ -362,18 +358,7 @@
                                             <div class="block2 position-relative">
                                                 <!-- Hình ảnh sản phẩm -->
                                                 <div class="block2-pic hov-img0">
-                                                    {{-- @php
-                                                        $images = $item->image ? json_decode($item->image) : [];
-                                                    @endphp
-                                                    @if (!empty($images) && (is_array($images) || is_object($images)))
-                                                        <img src="{{ asset('storage/' . $images[0]) }}"
-                                                            alt="{{ $item->name }}" class="img-fluid"
-                                                            style="height: 200px; object-fit: cover;">
-                                                    @else
-                                                        <img src="{{ asset('images/default-placeholder.jpg') }}"
-                                                            alt="No Image" class="img-fluid"
-                                                            style="height: 200px; object-fit: cover;">
-                                                    @endif --}}
+                                                    
                                                     @if ($item->image)
                                                         @php
                                                             $images = json_decode($item->image);
@@ -438,17 +423,6 @@
                                                             </span>
                                                         @endif
                                                     </div>
-                                                    {{-- <div class="block2-txt-child2 flex-r p-t-3">
-                                                        <a href="#"
-                                                            class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                                            <img class="icon-heart1 dis-block trans-04"
-                                                                src="{{ asset('images/icons/icon-heart-01.png') }}"
-                                                                alt="ICON">
-                                                            <img class="icon-heart2 dis-block trans-04 ab-t-l"
-                                                                src="{{ asset('images/icons/icon-heart-02.png') }}"
-                                                                alt="ICON">
-                                                        </a>
-                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -459,7 +433,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     {{-- <!-- Blog -->
     <section class="sec-blog bg0 p-t-60 p-b-90">

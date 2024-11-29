@@ -109,8 +109,19 @@
 
         </div>
         <!-- Mô tả sản phẩm -->
-
     </section> --}}
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
     <section class="sec-product-detail bg0 p-t-65 p-b-60">
         <div class="container">
             <div class="row">
@@ -253,8 +264,6 @@
                                     </a>
                                 </form>
                             </div>
-                            
-
                             <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
                                 data-tooltip="Facebook">
                                 <i class="fa fa-facebook"></i>

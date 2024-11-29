@@ -12,6 +12,7 @@
 @if (session('error'))
     <div class="alert alert-danger">{{ session('error') }}</div>
 @endif
+
 {{-- <div class="container my-5">
     <h1>Danh sách yêu thích của bạn</h1>
     @if ($wishlists->isEmpty())
