@@ -228,7 +228,14 @@
                                             class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">Thêm
                                             vào giỏ hàng</button>
                                     </form>
-
+                                    <form action="{{ route('wishlist.store', ['productId' => $product->id]) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" 
+                                            class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                            Thêm vào yêu thích
+                                        </button>
+                                    </form>
+                                    
                                 </div>
                             </div>
                         </div>

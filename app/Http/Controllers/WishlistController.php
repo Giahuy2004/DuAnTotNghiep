@@ -19,27 +19,24 @@ class WishlistController extends Controller
 
         return view('user.wishlist.index', compact('wishlists'));
     }
-
-    /**
-     * Thêm sản phẩm vào danh sách yêu thích.
-     */
-    public function store(Request $request)
+    public function store(Request $request,$productId)
     {
-        $request->validate([
-            'product_id' => 'required|exists:products,id',
+        // Kiểm tra nếu người dùng đã đăng nhập
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để thêm vào yêu thích.');
+        }
+
+        // Kiểm tra xem sản phẩm có tồn tại không
+        $product = Product::findOrFail($productId);
+
+        // Thêm sản phẩm vào danh sách yêu thích
+        $wishlist = Wishlist::firstOrCreate([
+            'user_id' => auth()->id(),
+            'product_id' => $product->id,
         ]);
 
-        $wishlist = Wishlist::firstOrCreate(
-            [
-                'user_id' => auth()->id(),
-                'product_id' => $request->product_id,
-            ]
-        );
-        if ($wishlist->wasRecentlyCreated) {
-            return back()->with('success', 'Sản phẩm đã được thêm vào danh sách yêu thích!');
-        }
-        return back()->with('info', 'Sản phẩm đã có trong danh sách yêu thích!');
-        // return redirect()->route('wishlist.index')->with('success', 'Sản phẩm đã được thêm vào danh sách!');
+        // Trả về thông báo thành công
+        return redirect()->route('wishlist.index')->with('success', 'Sản phẩm đã được thêm vào danh sách yêu thích!');
     }
 
     /**

@@ -283,12 +283,6 @@
                          </a>
                      </li>
 
-                     <li class="p-b-13">
-                         <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-                             Sản phẩm yêu thích
-                         </a>
-                     </li>
-
 
                      <!-- Menu đăng nhập/đăng ký và thông tin người dùng -->
                      @if (Route::has('login'))
@@ -299,7 +293,11 @@
                                          Hồ sơ người dùng
                                      </a>
                                  </li>
-
+                                 <li class="p-b-13">
+                                    <a href="{{ route('wishlist.index') }}" class="stext-102 cl2 hov-cl1 trans-04">
+                                        Sản phẩm yêu thích
+                                    </a>
+                                </li>
                                  <li class="p-b-13">
                                      <a href="{{ route('user.orders.index') }}" class="stext-102 cl2 hov-cl1 trans-04">
                                          Đơn hàng
